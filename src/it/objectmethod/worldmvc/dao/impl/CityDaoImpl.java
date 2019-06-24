@@ -14,13 +14,16 @@ public class CityDaoImpl implements ICityDao {
 	@Override
 	public City getCityById(int idCity) {
 		City city = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
 		try {
-			Connection conn = ConnectionFactory.getConnection();
+			conn = ConnectionFactory.getConnection();
 			String sql = "SELECT * FROM city WHERE id = ?";
-			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, idCity);
-			ResultSet rs = stmt.executeQuery();
-			while(rs.next()) {
+			rs = stmt.executeQuery();
+			while (rs.next()) {
 				city = new City();
 				city.setId(rs.getInt("ID"));
 				city.setCountryCode(rs.getString("CountryCode"));
@@ -31,8 +34,25 @@ public class CityDaoImpl implements ICityDao {
 			rs.close();
 			stmt.close();
 			conn.close();
-		} catch (SQLException e) {
+		} catch (SQLException se) {
+			// Handle errors for JDBC
+			se.printStackTrace();
+		} catch (Exception e) {
+			// Handle errors for Class.forName
 			e.printStackTrace();
+		} finally {
+			// finally block used to close resources
+			try {
+				if (stmt != null)
+					stmt.close();
+			} catch (SQLException se2) {
+			} // nothing we can do
+			try {
+				if (conn != null)
+					conn.close();
+			} catch (SQLException se) {
+				se.printStackTrace();
+			} // end finally try
 		}
 
 		return city;
