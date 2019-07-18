@@ -18,6 +18,7 @@ public class ListCityServlet extends HttpServlet{
 		List<City> list = new ArrayList<>();
 		// Qualcosa...
 		req.setAttribute("cityList", list);
+		req.getRequestDispatcher("pages/show-cities.jsp").forward(req, resp);
 	}
 	
 }
