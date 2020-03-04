@@ -12,8 +12,8 @@
 
 <body>
 	<h1>Lista città:</h1>
-	<c:forEach items="${cityList}" var="city">
-		<p>${city.name}-${city.district} - ${city.population}</p>
+	<c:forEach items="${cityList}" var="pippo">
+		<p>${pippo.name}-${pippo.district} - ${pippo.population}</p>
 	</c:forEach>
 </body>
 </html>
