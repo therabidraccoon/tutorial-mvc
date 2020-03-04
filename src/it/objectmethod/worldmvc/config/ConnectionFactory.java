@@ -36,8 +36,8 @@ public class ConnectionFactory {
 	public static Connection getConnection() {
 		Connection conn = null;
 
-		// Register JDBC driver
 		try {
+			// Register JDBC driver
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(URL, USER, PASS);
 		} catch (Exception e) {
