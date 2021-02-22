@@ -14,7 +14,7 @@ import it.objectmethod.worldmvc.domain.City;
 import it.objectmethod.worldmvc.validators.CityValidator;
 
 @WebServlet("/city")
-public class CityServlet extends HttpServlet{
+public class CityServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,7 +26,7 @@ public class CityServlet extends HttpServlet{
 			int idCity = Integer.parseInt(idCityStr);
 			city = cityDao.getCityById(idCity);
 			boolean valid = cityValidator.validate(city);
-			if(!valid) {
+			if (!valid) {
 				throw new Exception("Popolazione non può essere minore di 0");
 			}
 		} catch (Exception e) {
