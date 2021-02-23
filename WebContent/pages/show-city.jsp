@@ -9,6 +9,6 @@
 </head>
 <body>
  <h1>Città selezionata:</h1>
- <p>${city.name} - ${city.district} - ${city.population}</p>
+ <p>${city.name} - ${city.countryCode} - ${city.population}</p>
 </body>
 </html>
